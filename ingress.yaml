@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: myapp-ingress
+spec:
+  rules:
+    - host: myapp-ingress.172.31.82.80.nip.io
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: myapp-client-service
+              servicePort: 3000
+          - path: /api/
+            backend:
+              serviceName: myapp-server-service
+              servicePort: 5000
